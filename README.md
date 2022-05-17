@@ -1,1 +1,71 @@
 # gremlin-air-routes-api
+Example REST API backends
+
+## What is This Project?
+
+This project contains various REST API examples using Apache Tinkerpop Gremlin APIs using 
+the example database and tutorials provided in [Practical Gremlin](https://www.kelvinlawrence.net/book/Gremlin-Graph-Guide.html)
+authored by Kelvin Lawrence.
+
+## Why This Project? 
+When encountered with a new DB technology like Gremlin, the initial ramp up has been difficult because:
+
+* I usually fail to connect to the database the first time,
+* I usually fail to run my first quer I write,
+* I usually do not know how to map the database data to and from JSON,
+* I usually need something quick and simple to perform more query experiments
+
+I am sure you have had similar frustrations. 
+
+I will go through the steps of creating a new server from scrach in each of target platform, and
+will document any "gotchas" along the way.
+
+## Who Can Use This Project?
+
+If you are interested in developing server backends that need Gremlin access but do not know
+how and where to start, this might be the right starting point for you.
+
+## Is this Free? Can I Use This to Make Money?
+
+Yes, it is open, free and both your and my rights are protected under the Apache 2.0 License. If you do not or cannot agree with
+these license terms, then please do not use this project.
+
+## Project Roadmap
+
+### May 2022 - Start on Node.js and Typescript based implementation.
+
+### Then...
+
+* Implement Python flask based server. 
+* Implement Scala and Play Framework based server.
+* Implement GO based server.
+
+## What to Bring
+
+A suitable Linux, Macintosh, or Windows desktop computer with a modern OS installed and 8 GB or more
+of memory installed.
+
+This project will require my Air Routes Gremlin Server docker image. As such you need to have
+the docker, usually the `docker desktop` installed and then do the pull.
+
+A few gig of disk space.
+
+Visual Studio Code
+
+(Please note that I use Jetbrains IDEs)
+
+Coffee, Tea, Soda or pure Water to keep you awake and hydrated.
+
+## Other Helpful Stuff
+
+* [gdotv](https://gdotv.com) is an excellent Graph IDE I use to explore and maintain my Graphs.
+
+## Who Wrote This and How to Contact the Author?
+
+My details are provided in my github profile. 
+Please contribute your fixes and improvements as Pull Requests and also bug reports on the
+project's GitHub page at https://github.com/imanabu/gremlin-air-routes-api
+
+
+
+
