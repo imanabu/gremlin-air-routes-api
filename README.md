@@ -61,6 +61,12 @@ these license terms, then please do not use this project.
 
 * [gdotv](https://gdotv.com) is an excellent Graph IDE I use to explore and maintain my Graphs.
 
+## Disclaimers - Not a Real Travel Guide Program!
+
+Please do not use the data or results to plan your next trip to Rome, Taj Mahar, or <a place of your choice.> with this project. 
+Do not provide such guidance resources on public internet based on this project. The airline industry can changes routes, 
+cancels flights aggainst your wishes and change pricing and boarding priorities by the minute. 
+
 ## Who Wrote This and How to Contact the Author?
 
 My details are provided in my github profile. 
