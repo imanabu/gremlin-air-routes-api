@@ -63,7 +63,7 @@ these license terms, then please do not use this project.
 
 ## Disclaimers - Not a Real Travel Guide Program!
 
-Please do not use the data or results to plan your next trip to Rome, Taj Mahar, or <a place of your choice.> with this project. 
+Please do not use the data or results to plan your next trip to Rome, Taj Mahar, or (a place of your choice). with this project. 
 Do not provide such guidance resources on public internet based on this project. The airline industry can changes routes, 
 cancels flights aggainst your wishes and change pricing and boarding priorities by the minute. 
 
