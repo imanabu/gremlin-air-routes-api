@@ -1,0 +1,35 @@
+{
+  "name": "gremlin-airroutes-api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./bin/www",
+    "test": "tsc && mocha -exit -r ts-node/register test/**/*.spec.ts"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "gremlin": "^3.6.0",
+    "http-errors": "~1.6.3",
+    "loadash": "^1.0.0",
+    "mocha": "^10.0.0",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11",
+    "source-map-resolve": "^0.6.0",
+    "source-map-support": "^0.5.21",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/assert": "^1.5.6",
+    "@types/gremlin": "^3.5.2",
+    "@types/mocha": "^9.1.1",
+    "assert": "^2.0.0",
+    "css-loader": "^6.7.1",
+    "style-loader": "^3.3.1",
+    "superagent": "^7.1.3",
+    "ts-loader": "^9.3.0",
+    "ts-node": "^10.7.0"
+  }
+}
