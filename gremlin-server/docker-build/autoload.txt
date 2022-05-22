@@ -1,1 +1,0 @@
-:load load-air-routes-graph.groovy

@@ -1,9 +1,10 @@
 $root="./src/apache-tinkerpop-gremlin-server-3.6.0"
-$bin="$root/bin"
-$scripts="$root/scripts"
+$conf="$root/conf"
 $data="$root/data"
-Copy-Item autoload.txt $root
-Copy-Item air-routes-latest.graphml.xml  $root
-Copy-item start.sh $root
-Copy-Item load-air-routes-graph.groovy $root
+$scripts="$root/scripts"
+Copy-Item ./assets/gremlin-server.yaml $conf/.
+Copy-Item ./assets/air-routes-latest.graphml  $data/.
+Copy-item ./assets/start.sh $root
+Copy-Item ./assets/load-air-routes-graph.groovy $scripts/.
+docker build -t gremlin-air-routes-server:latest .
 
