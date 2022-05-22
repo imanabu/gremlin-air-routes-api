@@ -1,1 +1,0 @@
-docker run --rm -p 2480:2480 -p 2424:2424 -p 8182:8182 -e arcadedb.server.plugins=GremlinServer:com.arcadedb.server.gremlin.GremlinServerPlugin -e arcadedb.server.rootPassword=airroutes arcadedata/arcadedb:latest
