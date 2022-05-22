@@ -36,6 +36,8 @@ loading. They were lifted off from other script files in the scripts directory.
 
 ## Docker Network Binding Issue
 
-The `gremlin-server.yaml` file's `host:` parameter should be set to the docker's web address which is fixed to
+* The `gremlin-server.yaml` file's `host:` parameter should be set to the docker's web address which is fixed to
 `172.17.0.2` If it is fixed to the `localhost` it will not be accessible from the outside of the container.
 
+* If you edit a `shell script` on Windows, it will not run and even very unhelpful message from the Docker or Ubuntu
+  shell. Always run dos2unix program (see DockerFile how this is done). No harm done to run the same on Mac.
