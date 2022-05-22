@@ -1,6 +1,14 @@
 # gremlin-air-routes-api
 Example REST API backends
 
+## Current Project Status
+
+* 22-May-2022: The Docker image for test server is completed, and begin implementation of the node API 
+  functions.
+
+    docker run --rm -p 8182:8182 imanabu/gremlin-air-routes-server
+
+
 ## What is This Project?
 
 This project will contain various REST API examples using Apache Tinkerpop Gremlin APIs using 
