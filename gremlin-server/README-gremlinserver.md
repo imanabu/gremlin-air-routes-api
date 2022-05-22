@@ -14,7 +14,7 @@ The graphml data are from [This Github Repo](https://github.com/krlawrence/graph
 
 This example uses [This GraphML File](https://github.com/krlawrence/graph/tree/master/sample-data)
 
-## How Do I Build The Container
+## How Do I Build The Docker Image
 
 1. Go inside the `docker-build` dir.
 2. First inspect `download-server.ps` and let it download the Gremlin Server and Data files, unpack and put them under
