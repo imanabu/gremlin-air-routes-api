@@ -11,3 +11,7 @@ export interface IAirport {
     runways: number,
     type: string
 }
+
+export interface IRoute {
+    distance: number;
+}
