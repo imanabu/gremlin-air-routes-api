@@ -1,3 +1,5 @@
+import {GremlinDb} from "./daos/GremlinDb";
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -6,6 +8,8 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/api');
+
+GremlinDb.open('ws://localhost:8182/gremlin');
 
 const app = express();
 
