@@ -1,4 +1,3 @@
-import {Label} from "../models/Label";
 import {GremlinDb} from "./GremlinDb";
 
 export class AirRoutesDao {
@@ -9,8 +8,9 @@ export class AirRoutesDao {
         GremlinDb.open("")
     }
 
-    public howManyAirports: () => Object = () => {
+    public totalAirports: () => Promise<number> = async () => {
         let g = GremlinDb.g;
-        return g.V().has(Label.airport).count().toList()[0] as number
+        let result: IteratorResult<number> = await g.V().hasLabel("airport").count().next();
+        return result.value
     }
 }

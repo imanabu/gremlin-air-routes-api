@@ -38,6 +38,6 @@ app.use(function(err, req, res, _) {
   res.render('error');
 });
 
-
+console.log("Please open http://localhost:3000");
 
 module.exports = app;
