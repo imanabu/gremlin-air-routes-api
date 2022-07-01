@@ -9,7 +9,6 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
 
-
 GremlinDb.open('ws://localhost:8182/gremlin');
 
 const app = express();

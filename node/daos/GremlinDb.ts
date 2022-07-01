@@ -33,4 +33,16 @@ export class GremlinDb {
             });
         }
     }
+
+    public static mapToJson(m: Map<string, any>): any {
+        let keys = m.keys();
+        let s = "{";
+        for(let key of keys) {
+            let val = m.get(key);
+            s += `"${key}": ${val},`
+        }
+        s += "}"
+        s = s.replace(",}", "}");
+        return JSON.parse(s);
+    }
 }
