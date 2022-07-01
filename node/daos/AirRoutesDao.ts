@@ -1,7 +1,10 @@
 import {GremlinDb} from "./GremlinDb";
 import {Label} from "../models/Label";
-import {process} from "gremlin";
+import {process, structure} from "gremlin";
 import fp = require("lodash/fp");
+import toLong = structure.toLong;
+import GraphTraversal = process.GraphTraversal;
+
 // import static org.apache.tinkerpop.gremlin.structure.T.*;
 
 // import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource;
@@ -38,6 +41,20 @@ export class AirRoutesDao {
         return result.value as number;
     }
 
+    /**
+     * Put your own experiment code here.
+     */
+    public static async experiment(): Promise<any> {
+        const g = GremlinDb.g;
+        await g.V().hasLabel("testProperty")
+            .property("number1", 1)
+            .property("number2", Number(2))
+            .property("numberPi", 3.14)
+            .property("numberLong", toLong(3000))
+            .iterate();
+        return {};
+    }
+
     public static async find(label: string, property: string, value: any) {
         const g = GremlinDb.g;
         AirRoutesDao.validateLabel(label);
@@ -65,6 +82,40 @@ export class AirRoutesDao {
         }
     }
 
+    public static async upsert(label: string, value: any) {
+        const my = this;
+        my.validateLabel(label);
+        const id = value.id;
+
+        const setFromJson = (tp: GraphTraversal) => {
+            for(let key of Object.keys(value)) {
+                if (!(key == "id" || key == "label")) {
+                    let x = value[key];
+                    tp.property(key, x)
+                }
+            }
+            return tp;
+        }
+
+        const upsertAirport = () => {
+            const g = GremlinDb.g;
+            let t: GraphTraversal;
+            if (!id) {
+                t = g.addV(Label.airport);
+            } else {
+                t = g.V(id);
+            }
+            setFromJson(t).iterate();
+        }
+
+        switch(label) {
+            case "airport":
+                return upsertAirport();
+            default:
+                throw new Error(`${label} upsert not yet available`);
+        }
+    }
+
     public static async valueMap(kind: string, id: string) {
         const gt = GremlinDb.gt(kind, id);
         if (gt) {
@@ -73,7 +124,6 @@ export class AirRoutesDao {
         } else {
             return [];
         }
-
     }
 
     public static async version(): Promise<process.Traverser[]> {

@@ -72,11 +72,33 @@ router.get('/value-map/:kind/:id', async (req, res, _) => {
     }
 });
 
+router.post('/upsert/:label', async (req, res, _) => {
+    try {
+        const dao = AirRoutesDao;
+        const result = await dao.upsert(req.params.label, req.body)
+        return res.json(result);
+    } catch (why) {
+        const message = (why as Error).message;
+        return res.status(400).send({message});
+    }
+});
+
 router.get('/version', async (req, res, _) => {
     try {
         const dao = AirRoutesDao;
         const version = await dao.version();
         return res.json(version);
+    } catch (why) {
+        const message = (why as Error).message;
+        return res.status(400).send({message});
+    }
+});
+
+router.get('/experiment', async (req, res, _) => {
+    try {
+        const dao = AirRoutesDao;
+        const result = await dao.experiment();
+        return res.json(result);
     } catch (why) {
         const message = (why as Error).message;
         return res.status(400).send({message});

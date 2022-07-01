@@ -1,4 +1,5 @@
 export interface IAirport {
+    id: string,
     city: string,
     code: string,
     desc: string,
