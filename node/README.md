@@ -57,6 +57,39 @@ Note that your Vertex ID 2 may not be the same as I have.
         "desc": "Anchorage Ted Stevens"
     }
 
+### Update or Insert an Airport
+Update or insert a new airport record. If the id field contains the existing Vertex ID then
+it will find the vertex and update. If it is left null, it will create a new record.
+No real validation is done as to if an airport code already exists and such.
+The data structure is the same as the one returned with `api/value-map/:kind/:id`
+The label property will be ignored.
+
+#### POST API
+    curl -X POST -H “Content-Type: application/json” -d “@test.json” http://localhost:3000/api/upsert/airport
+### Example
+
+To insert a new airport, create a JSON file with something like:
+  {
+  "id": null,
+  "label": "airport",
+  "country": "US",
+  "code": "HMBINT",
+  "longest": 100,
+  "city": "Half Moon Bay",
+  "elev": 12,
+  "icao": "TEST",
+  "lon": -179.996002197266,
+  "type": "airport",
+  "region": "US-CA",
+  "runways": 1,
+  "lat": 0.01,
+  "desc": "Half Moon Bay International"
+  }
+
+curl -X POST -H “Content-Type: application/json” -d “@test.json” http://localhost:3000/api/upsert/airport
+   
+
+
 ### Count Vertices of a Label
 See PG 3.2.3. Counting things.
 #### GET API
