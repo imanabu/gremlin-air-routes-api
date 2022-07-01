@@ -3,6 +3,7 @@ Example REST API backends
 
 ## Current Project Status
 
+* 30-June-2022: A good chunk of node.js/express is running now. 
 * 22-May-2022: The Docker image for test server is completed, and begin implementation of the node API 
   functions.
 
