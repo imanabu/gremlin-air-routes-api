@@ -61,6 +61,16 @@ router.get('/has-not/:kind/:property', async function(req, res, _) {
     }
 });
 
+router.get('/value-map/:kind/:id', async function(req, res, _) {
+    try {
+        let dao = AirRoutesDao;
+        let result = await dao.valueMap(req.params.kind, req.params.id);
+        return res.json(result);
+    } catch (why) {
+        let message = (why as Error).message;
+        return res.status(400).send({message});
+    }
+});
 
 router.get('/version', async function(req, res, _) {
     try {

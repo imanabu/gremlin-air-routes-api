@@ -32,20 +32,20 @@ export class AirRoutesDao {
     }
 
     public static async countVerticesOf(label: string): Promise<number> {
-        let g = GremlinDb.g;
+        const g = GremlinDb.g;
         AirRoutesDao.validateLabel(label);
         let result: IteratorResult<number> = await g.V().hasLabel(label).count().next();
         return result.value as number;
     }
 
     public static async find(label: string, property: string, value: any) {
-        let g = GremlinDb.g;
+        const g = GremlinDb.g;
         AirRoutesDao.validateLabel(label);
         return await g.V().has(label, property, value).toList();
     }
 
     public static async groupCountBy(kind: string, what: string) {
-        let g = GremlinDb.g;
+        const g = GremlinDb.g;
         let t;
         if (kind === "v") {
             t = g.V()
@@ -62,7 +62,7 @@ export class AirRoutesDao {
     }
 
     public static async has(kind: string, property: string, not: boolean) {
-        let g = GremlinDb.g;
+        const g = GremlinDb.g;
         if (kind === "v") {
             if (not) {
                 return await g.V().hasNot(property).toList();
@@ -80,8 +80,25 @@ export class AirRoutesDao {
         return [];
     }
 
+    public static async valueMap(kind: string, id: string) {
+        const g = GremlinDb.g;
+        let t;
+        if (kind === "v") {
+            t = g.V(id);
+        } else if(kind === "e") {
+            t = g.E(id);
+        }
+        if (t) {
+           let list = await t.valueMap(true).toList();
+           return GremlinDb.mapToJson(list[0]);
+        } else {
+            return [];
+        }
+
+    }
+
     public static async version(): Promise<process.Traverser[]> {
-        let g = GremlinDb.g;
+        const g = GremlinDb.g;
         return await g.V().hasLabel(Label.version).values().toList();
     }
 }

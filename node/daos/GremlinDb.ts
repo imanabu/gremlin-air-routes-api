@@ -36,10 +36,48 @@ export class GremlinDb {
 
     public static mapToJson(m: Map<string, any>): any {
         let keys = m.keys();
+
+        const toS = (x) => {
+            if (!x) { return "null"; }
+            switch(typeof(x)) {
+                case "boolean":
+                    if (x) {
+                        return "true";
+                    } else {
+                        return "false";
+                    }
+                case "number":
+                    return `${x}`;
+                default:
+                    return `"${x}"`;
+            }
+        }
+
         let s = "{";
+        let valStr = "";
         for(let key of keys) {
             let val = m.get(key);
-            s += `"${key}": ${val},`
+            if (Array.isArray(val)) {
+                console.log(`${key} is an Array`);
+                let a = val as Array<any>;
+                let len = a.length;
+                if (len == 1) {
+                    valStr = toS(a[0]);
+                } else {
+                    let index = 0;
+                    valStr = "[";
+                    for(let item of a) {
+                        index++;
+                        valStr += toS(item);
+                        if (index < len) valStr += ",";
+                    }
+                    valStr += "]";
+                }
+
+            } else {
+                valStr = toS(val);
+            }
+            s += `"${key}": ${valStr},`
         }
         s += "}"
         s = s.replace(",}", "}");
