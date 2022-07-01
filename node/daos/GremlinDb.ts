@@ -9,6 +9,23 @@ export class GremlinDb {
         else throw new Error("Please call open(url) to connect to the graph.");
     }
 
+    public static gt(kind: string, id?: any): process.GraphTraversal {
+        if (this._g) {
+            if (kind === "v") {
+                if (id) {
+                    return this._g.V(id);
+                }
+                return this._g.V();
+            } else if (kind === "e") {
+                if (id) {
+                    return this._g.E(id);
+                }
+                return this._g.E();
+            }
+        }
+        throw new Error("Please call open(url) to connect to the graph.");
+    }
+
     private static _g: process.GraphTraversalSource<process.GraphTraversal> | null = null;
     private static _drc: DriverRemoteConnection | null = null;
 
@@ -58,7 +75,6 @@ export class GremlinDb {
         for(let key of keys) {
             let val = m.get(key);
             if (Array.isArray(val)) {
-                console.log(`${key} is an Array`);
                 let a = val as Array<any>;
                 let len = a.length;
                 if (len == 1) {
