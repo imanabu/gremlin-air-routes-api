@@ -1,14 +1,16 @@
 # gremlin-air-routes-api
-Example REST API backends
+Practical REST API Backend Development Learning Kit
 
 ## Current Project Status
 
+Node/Express: In good progress. Usable now.
+Python: Not started
+Go: Not started
+
+* 1-July-2022: node: upsert interface is available. Fixed the npm security issue to zero.
 * 30-June-2022: A good chunk of node.js/express is running now. 
 * 22-May-2022: The Docker image for test server is completed, and begin implementation of the node API 
   functions.
-
-    docker run --rm -p 8182:8182 imanabu/gremlin-air-routes-server
-
 
 ## What is This Project?
 
@@ -72,7 +74,7 @@ these license terms, then please do not use this project.
 
 ## Disclaimers - Not a Real Travel Guide Program!
 
-Please do not use the data or results to plan your next trip to Rome, Taj Maher, or (a place of your choice). with this project. 
+Please do not use the data or results to plan your next trip to Rome, Taj Mahar, or (a place of your choice). with this project. 
 Do not provide such guidance resources on public internet based on this project. The airline industry can change routes, 
 cancels flights against your wishes and change pricing and boarding priorities by the minute. 
 
