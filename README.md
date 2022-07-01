@@ -22,12 +22,12 @@ When I learn a new DB technology like Gremlin, the initial ramp up has been diff
 * I usually fail to connect to the database the first time,
 * I usually can connect to the database but driver won't let me do much more than that,
 * I usually fail to run my first query I write,
-* I usually do not know how to map the database data to and from JSON from the query returns in the API or SDK of the database,
-* I usually need something quick and simple to perform more query experiments
+* I usually do not know how to map the database data to and from JSON from to the API or SDK of the database,
+* I usually need something quick and simple to perform more query experiments.
 
 I am sure you have had similar frustrations. 
 
-I will go through the steps of creating a new server from scrach in each of target platform, and
+I will go through the steps of creating a new server from scratch in each of target platform, and
 will document any "gotchas" along the way.
 
 ## Who Can Use This Project?
@@ -72,16 +72,12 @@ these license terms, then please do not use this project.
 
 ## Disclaimers - Not a Real Travel Guide Program!
 
-Please do not use the data or results to plan your next trip to Rome, Taj Mahar, or (a place of your choice). with this project. 
-Do not provide such guidance resources on public internet based on this project. The airline industry can changes routes, 
-cancels flights aggainst your wishes and change pricing and boarding priorities by the minute. 
+Please do not use the data or results to plan your next trip to Rome, Taj Maher, or (a place of your choice). with this project. 
+Do not provide such guidance resources on public internet based on this project. The airline industry can change routes, 
+cancels flights against your wishes and change pricing and boarding priorities by the minute. 
 
 ## Who Wrote This and How to Contact the Author?
 
 My details are provided in my github profile. 
 Please contribute your fixes and improvements as Pull Requests and also bug reports on the
 project's GitHub page at https://github.com/imanabu/gremlin-air-routes-api
-
-
-
-
