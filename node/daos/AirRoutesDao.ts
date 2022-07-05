@@ -41,6 +41,14 @@ export class AirRoutesDao {
         return result.value as number;
     }
 
+    public static async delete(kind: string, label: string, id: string): Promise<void> {
+        const r = await  GremlinDb.gt(kind).hasLabel(label).hasId(id).toList();
+        if (r.length == 0) {
+            throw new Error(`No element ${kind} of ${label} with the id of ${id}`);
+        }
+        await GremlinDb.gt(kind).hasLabel(label).hasId(id).drop().iterate();
+    }
+
     /**
      * Put your own experiment code here.
      */

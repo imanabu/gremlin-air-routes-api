@@ -16,6 +16,18 @@ router.get('/count/:label', async (req, res, _) => {
     }
 });
 
+router.delete('/delete/:kind/:label/:id', async (req, res, _) => {
+    try {
+        const dao = AirRoutesDao;
+        const p = req.params;
+        await dao.delete(p.kind, p.label, p.id);
+        return res.status(200);
+    } catch (why) {
+        const message = (why as Error).message;
+        return res.status(400).send({message});
+    }
+});
+
 router.get('/find/:label/:property/:value', async (req, res, _) => {
     try {
         const dao = AirRoutesDao;
