@@ -1,9 +1,18 @@
 import {GremlinDb} from "./GremlinDb";
 import {Label} from "../models/Label";
-import {process, structure} from "gremlin";
+import {process} from "gremlin";
 import fp = require("lodash/fp");
-import toLong = structure.toLong;
+// import toLong = structure.toLong;
 import GraphTraversal = process.GraphTraversal;
+
+const __ = process.statics;
+// const T = process.t;
+// const P = process.P
+
+// const Path = graphModule.Path;
+// const t = traversalModule.t;
+// const P = traversalModule.P;
+// const direction = traversalModule.direction;
 
 // import static org.apache.tinkerpop.gremlin.structure.T.*;
 
@@ -42,7 +51,7 @@ export class AirRoutesDao {
     }
 
     public static async delete(kind: string, label: string, id: string): Promise<void> {
-        const r = await  GremlinDb.gt(kind).hasLabel(label).hasId(id).toList();
+        const r = await GremlinDb.gt(kind).hasLabel(label).hasId(id).toList();
         if (r.length == 0) {
             throw new Error(`No element ${kind} of ${label} with the id of ${id}`);
         }
@@ -54,12 +63,21 @@ export class AirRoutesDao {
      */
     public static async experiment(): Promise<any> {
         const g = GremlinDb.g;
-        await g.V().hasLabel("testProperty")
-            .property("number1", 1)
-            .property("number2", Number(2))
-            .property("numberPi", 3.14)
-            .property("numberLong", toLong(3000))
-            .iterate();
+        const from = "AUS";
+        const to = "SFO";
+        const list = await g.V().has('code', from).until(__.has('code', to)).repeat(__.out().simplePath()).limit(100).path().by("code").toList();
+        if (list.length > 0) {
+            return list.map(p => (p as any).objects)
+                .map(o => {
+                    let r = "";
+                    let i = 1;
+                    for (i; i <= o.length; i++) {
+                        r += o[i - 1];
+                        if (i != o.length) r += "->";
+                    }
+                    return r;
+                })
+        }
         return {};
     }
 
@@ -80,7 +98,7 @@ export class AirRoutesDao {
         }
     }
 
-    public static async has(kind: string, property: string, not: boolean) :
+    public static async has(kind: string, property: string, not: boolean):
         Promise<process.Traverser[]> {
         const gt = GremlinDb.gt(kind);
         if (not) {
@@ -90,13 +108,38 @@ export class AirRoutesDao {
         }
     }
 
+    /**
+     * Find the shortest paths between airports
+     */
+    public static async findShortedPath(from: string, to: string, limit: number): Promise<any> {
+        const g = GremlinDb.g;
+        const list = await g.V().has('code', from)
+            .until(__.has('code', to))
+            .repeat(__.out().simplePath())
+            .limit(limit).path().by("code").toList();
+        if (list.length > 0) {
+            return list.map(p => (p as any).objects)
+                .map(o => {
+                    let r = "";
+                    let i = 1;
+                    for (i; i <= o.length; i++) {
+                        r += o[i - 1];
+                        if (i != o.length) r += "->";
+                    }
+                    return r;
+                })
+        }
+        return {};
+    }
+
+
     public static async upsert(label: string, value: any) {
         const my = this;
         my.validateLabel(label);
         const id = value.id;
 
         const setFromJson = (tp: GraphTraversal) => {
-            for(let key of Object.keys(value)) {
+            for (let key of Object.keys(value)) {
                 if (!(key == "id" || key == "label")) {
                     let x = value[key];
                     tp.property(key, x)
@@ -116,7 +159,7 @@ export class AirRoutesDao {
             setFromJson(t).iterate();
         }
 
-        switch(label) {
+        switch (label) {
             case "airport":
                 return upsertAirport();
             default:
@@ -127,8 +170,8 @@ export class AirRoutesDao {
     public static async valueMap(kind: string, id: string) {
         const gt = GremlinDb.gt(kind, id);
         if (gt) {
-           const list = await gt.valueMap(true).toList();
-           return GremlinDb.mapToJson(list[0] as any);
+            const list = await gt.valueMap(true).toList();
+            return GremlinDb.mapToJson(list[0] as any);
         } else {
             return [];
         }

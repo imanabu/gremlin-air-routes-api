@@ -117,4 +117,16 @@ router.get('/experiment', async (req, res, _) => {
     }
 });
 
+router.get('/find-shortest-path/:from/:to/:limit', async (req, res, _) => {
+    try {
+        const dao = AirRoutesDao;
+        const p = req.params;
+        const result = await dao.findShortedPath(p.from, p.to, Number.parseInt(p.limit));
+        return res.json(result);
+    } catch (why) {
+        const message = (why as Error).message;
+        return res.status(400).send({message});
+    }
+});
+
 module.exports = router;

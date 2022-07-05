@@ -116,6 +116,15 @@ See PG 3.2.2. Does a specific property exist on a given vertex or edge?
     curl http://localhost:3000/api/find/airport/region/US-NJ
     [{"id":608,"label":"airport"},{"id":632,"label":"airport"},{"id":2094,"label":"airport"},{"id":2105,"label":"airport"}]
 
+### Find the Shortest Path from Airport to Another
+See PG 3.27. Shortest paths (between airports) - introducing repeat.
+We need to handle the Path type returns in this example not Value Maps.
+#### GET API
+    curl http://localhost:3000/api/find-shortest-path/:from/:to/:limit
+#### Example
+    10 routes from San Francisco to Maui Hawaii
+    http://localhost:3000/api/find-shortest-path/SFO/OGG/10
+
 ### Group Count by Kind and What
 See PG 3.2.4. Counting groups of things
 #### GET API
@@ -137,10 +146,4 @@ See PG 3.2.4. Counting groups of things
     [{"id":0,"label":"version"},{"id":1,"label":"airport"},{"id":2,"label":"airport"}
     curl http://localhost:3000/api/has-not/v/runways
     [{"id":0,"label":"version"},{"id":3504,"label":"country"},{"id":3505,"label":"country"},
-
-### Where Can I Fly From an Airport
-Coming soon...
-
-### Where Can I Fly To From an Airport
-Coming soon...
 
