@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./bin/www",
-    "test": "tsc && mocha -exit -r ts-node/register test/**/*.spec.ts"
+    "test": "tsc && mocha -exit -r ts-node/register tests/**/*.spec.ts"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

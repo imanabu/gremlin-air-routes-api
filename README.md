@@ -7,7 +7,8 @@ Node/Express: In good progress. Usable now.
 Python: Not started
 Go: Not started
 
-* 1-July-2022: node: upsert interface is available. Fixed the npm security issue to zero.
+* 4-July-2022: `detete` API added. Basic CRUD mocha test added.  
+* 1-July-2022: node: upsert interface is available. Updated the npm module to remove all security audit issues.
 * 30-June-2022: A good chunk of node.js/express is running now. 
 * 22-May-2022: The Docker image for test server is completed, and begin implementation of the node API 
   functions.
@@ -70,16 +71,16 @@ these license terms, then please do not use this project.
 
 ## Other Helpful Stuff
 
-* [gdotv](https://gdotv.com) is an excellent Graph IDE I use to explore and maintain my Graphs.
+* [G DOT V](https://gdotv.com) is an excellent Graph IDE that I use to explore and maintain my Graphs.
 
 ## Disclaimers - Not a Real Travel Guide Program!
 
-Please do not use the data or results to plan your next trip to Rome, Taj Mahar, or (a place of your choice). with this project. 
+Please do not use the data or results to plan your next trip to Rome, Taj Maher, or (a place of your choice). with this project. 
 Do not provide such guidance resources on public internet based on this project. The airline industry can change routes, 
 cancels flights against your wishes and change pricing and boarding priorities by the minute. 
 
 ## Who Wrote This and How to Contact the Author?
 
-My details are provided in my github profile. 
+My details are provided in my GITHUB profile. 
 Please contribute your fixes and improvements as Pull Requests and also bug reports on the
 project's GitHub page at https://github.com/imanabu/gremlin-air-routes-api

@@ -7,6 +7,7 @@
     Install https://www.docker.com/products/docker-desktop/
     docker run --rm -p 8182:8182 imanabu/gremlin-air-routes-server 
     npm install
+    npm run test
     npm start
     curl http://localhost:3000/api/count/airport
 
@@ -89,7 +90,6 @@ To insert a new airport, create a JSON file with something like:
 curl -X POST -H “Content-Type: application/json” -d “@test.json” http://localhost:3000/api/upsert/airport
    
 
-
 ### Count Vertices of a Label
 See PG 3.2.3. Counting things.
 #### GET API
@@ -97,6 +97,14 @@ See PG 3.2.3. Counting things.
 ### Example
     curl http://localhost:3000/api/count/airport
     {"label":"airport","count":3503}
+
+### Delete an Vertex or Edge by Label and ID
+Verify if a target element is the `id` exists under the `label`, and if there is a match it will
+remove that element.
+#### DELETE API
+    curl -X DELETE http://localhost:3000/api/:kind/:label/:id
+#### Example
+    curl -X DELETE http://localhost:3000/api/v/airport/101
 
 ### Find Vertices With Specific Property and Value
 See PG 3.2.2. Does a specific property exist on a given vertex or edge?
